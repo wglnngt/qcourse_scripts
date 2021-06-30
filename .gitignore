@@ -3,3 +3,4 @@ cookies.json
 /__pycache__/
 /.idea/
 /courses/
+*.swp
