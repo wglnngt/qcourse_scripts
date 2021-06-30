@@ -69,7 +69,8 @@ class QCourse:
         networks = self.driver.execute_script('return window.performance.getEntries()')
         ts_url = key_url = ''
         for network in networks:
-            if '.ts?start' in network.get('name'):
+            #if '.ts?start' in network.get('name'):
+            if 'm3u8' in network.get('name'):
                 ts_url = network.get('name')
             elif 'get_dk' in network.get('name'):
                 key_url = network.get('name')

@@ -73,6 +73,14 @@ def ts2mp4(file):
     subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     os.remove(file)
 
+def m3u82mp4(url, file):
+    m3u8dl = os.path.join(os.getcwd(), 'm3u8dl.exe')
+    basename = os.path.basename(file)
+    file_dir = os.path.split(file)[0]
+    output = os.path.join(file_dir, basename)
+    cmd = m3u8dl + " \"" + url + "\" --workDir \"" + file_dir + "\" --saveName " + basename + " --enableDelAfterDone"
+    os.system(cmd)
+    #subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
 def choose_term(filename):
     terms = get_terms(filename)

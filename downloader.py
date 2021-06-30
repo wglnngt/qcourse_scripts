@@ -3,6 +3,7 @@ import requests
 from Crypto.Cipher import AES
 import os
 from utils import ts2mp4
+from utils import m3u82mp4
 
 
 def get_ts_url(url):
@@ -66,6 +67,10 @@ def download_single(ts_url, key_url, filename, path):
     filename = filename.replace('/', '／').replace('\\', '＼')
     ts_url = get_ts_url(ts_url)
     file = os.path.join(path, filename)
+    print('\nDownload from url :\n' + ts_url + '\nas :\n' + file )
+    m3u82mp4(ts_url, file)
+    return 0
+
     lg_download(file_url=ts_url, filename=filename + '.ts', path=path)
     download(file_url=key_url, file=file)
     key = get_key(file)
